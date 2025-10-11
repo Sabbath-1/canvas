@@ -126,7 +126,7 @@ img {
 .main-wrapper {
     background-color: #10103040;
     position: relative;
-    padding-inline: 1.5rem;
+    padding-inline: 1rem;
 }
 .page {
    --grid-max-count: 2;
@@ -208,7 +208,7 @@ img {
     text-align: center;
     color: #fff;
     padding: 2rem 1rem;
-    border-radius: 15px;
+    border-radius: 7px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 .hero {
@@ -279,9 +279,13 @@ img {
     padding-inline: 2rem;
     max-width: 800px;  
     background: #101030c0;
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     z-index: 50;
+
+    @media (width < 500px) {
+        padding: 2rem 1rem;
+    }
 }
 .newletter h2 {
     margin-bottom : 20px;
@@ -314,6 +318,13 @@ img {
     border: none;
     outline: none;
     font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+
+    @media (width < 675px) {
+        padding: 15px 20px;
+        margin-bottom: 10px;
+    }   
 }
 .newsletter-form button {
     background: #a50044;
@@ -334,6 +345,10 @@ img {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     transition: all 0.3s ease;
+
+    @media (width < 500px) {
+        padding: .6rem;
+    }
 }
 .blogPost img {
     border-radius: 8px;
