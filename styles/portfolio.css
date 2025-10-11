@@ -333,7 +333,7 @@ img {
     font-size:1rem; color:var(--clr-text-primary); margin-bottom:.95rem; font-family:'Montserrat', sans-serif;
 }
 .contact .container3 .contact-grid {
-    display:grid; grid-template-columns:1fr 1fr; gap:50px; min-width:100%; 
+    display: grid; grid-template-columns: 1fr 1fr; gap: 50px; min-width: 100%; 
 
     @media (width < 750px) {
         grid-template-columns:1fr; gap:30px;
@@ -342,6 +342,10 @@ img {
 .contact .container3 .contact-grid .contact-info {
     background-color:var(--clr-card-bg); border-radius:1vw; display:flex; flex-direction:column; padding:2.5rem; justify-content:center; gap:2rem;
     height:fit-content;
+
+    @media (width < 500px) {
+        padding:2rem 1rem;
+    }
 }
 .contact .container3 .contact-grid .contact-info h3 {
     font-family:'Montserrat' sans-serif; color:var(--clr-txt-secondary); margin-bottom:1rem; font-size:1.5rem;
@@ -380,6 +384,10 @@ img {
 .contact .container3 .contact-grid .send-message {
     background-color:var(--clr-card-bg); border-radius:1vw; display:flex; flex-direction:column; justify-content:center; gap:1rem;
     padding:2.5rem;
+
+    @media (width < 500px) {
+        padding:2rem 1rem;
+    }
 }
 .contact .container3 .contact-grid .send-message h3 {
     font-family:'Montserrat' sans-serif; color:var(--clr-txt-secondary); margin-bottom:1rem; font-size:1.5rem;
@@ -387,7 +395,7 @@ img {
 .contact .container3 .contact-grid .send-message form {
     display:flex; flex-direction:column; gap:1.7rem;
 }
-.contact .container3 .contact-grid .send-message form label input, .contact .container3 .contact-grid .send-message form label textarea{
+.contact .container3 .contact-grid .send-message form label input, .contact .container3 .contact-grid .send-message form label textarea {
     display:block; padding:12px 10px; height:auto; width:100%; border:1px solid var(--clr-border); border-radius:4px; font-family:inherit; font-size:1rem;
     margin-top:.5rem; transition:all .3s ease-in-out; resize:vertical; background-color:var(--clr-bg-secondary); color:var(--clr-text-primary);
 }

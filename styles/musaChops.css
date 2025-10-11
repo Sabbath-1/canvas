@@ -316,8 +316,8 @@ nav ul li a:hover {
     transition: var(--transition);
 }   
 .food-menu .dish-container:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.015);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 .food-menu .dish-img img {
     width: 100%;
