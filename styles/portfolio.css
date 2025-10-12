@@ -23,15 +23,20 @@ img {
     width:80%; max-width:1200px; margin:0 auto;
 }
 .nav {
-    display:flex; justify-content:space-between; align-items:center; position:fixed; top:0; left:0; right:0; z-index:1000;
-    background-color:var(--clr-bg-primary); padding:1rem 3rem;
+    display:flex; justify-content: space-between; align-items: center; position: fixed; top:0; left:0; right:0; z-index:1000;
+    background-color:var(--clr-bg-primary); padding:1rem 3rem; 
 
-    @media (width < 665px) {}
+    @media (width < 500px) {
+        padding:1rem 2rem;
+    }
 }
 .nav > .page-header {
     font-size:1.5rem; font-weight:700; color:var(--clr-txt-main); font-family:'Montserrat', sans-serif; cursor:pointer; z-index: 1050;
 
-    @media (width < 665px) {
+    @media (width < 760px) {
+        font-size:1.4rem;
+    }
+    @media (width < 500px) {
         font-size:1.3rem;
     }
 }   
@@ -40,7 +45,7 @@ img {
     background:transparent; border:none; outline:1px solid transparent; border-radius:50%; gap:.4rem;  right:3rem; cursor:pointer;
     transition:all .3s ease-in-out;
 
-    @media (width < 665px) {
+    @media (width < 760px) {
         display:flex; z-index:1000;
     }
 }
@@ -71,14 +76,14 @@ img {
 .nav .info {
     width: 60%;
 
-    @media (width < 665px) {
+    @media (width < 760px) {
         width: auto;
     }
 }
 .nav ul{
     display:flex; gap:2rem; align-items:center; z-index:999; 
 
-    @media (width < 665px) {
+    @media (width < 760px) {
         flex-direction:column; margin-top:2rem; position:fixed; top:0; right:0; background-color:var(--clr-bg-primary);  padding:4rem 3rem; 
         width: 60%; max-width: 300px; min-height: 100dvh; z-index: 999; display: none; 
     }
@@ -103,7 +108,7 @@ img {
     position: relative; margin-left: auto;
 
 
-    @media (width < 665px) {
+    @media (width < 760px) {
         margin-left: auto; margin-top: auto;
     }
 }
