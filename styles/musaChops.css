@@ -471,8 +471,12 @@ nav ul li a:hover {
     transition: var(--transition);
 }
 .services .service-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+
+    @media (width < 500px) {
+        transform: translateY(-5px);
+    }
 }
 .services .service-card img {
     width: 50px;
@@ -576,13 +580,13 @@ nav ul li a:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, .6);
+    background-color: rgba(255, 255, 255, .4);
     width: 35px;
     height: 35px;
     border-radius: 50%;
     z-index: 40;
     border: 1px solid #eee;
-    color: #333;
+    color: #111; font-size: 1.4rem;
     transition: var(--transition);
     cursor: pointer;
     display: flex;

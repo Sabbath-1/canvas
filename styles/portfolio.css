@@ -5,7 +5,7 @@
     --clr-border:#ccc; --clr-shadow:rgba(0,0,0,0.1); --border-line: linear-gradient(to right, transparent,rgba(0,0,0,.8) 30%, rgba(0,0,0,.8) 70%, transparent)100; 
 }
 [data-theme="dark"] {
-    --clr-bg-primary:#101010; --clr-bg-secondary:#1a1a1a; --clr-accent:#ffffff;
+    --clr-bg-primary:#101010; --clr-bg-secondary:#1a1a1a; --clr-accent:#f9f9f9;
     --clr-txt-main:#4ecdc4; --clr-txt-secondary:#6c63ff;
     --clr-surface:#2d2d2d; --clr-card-bg:#212121; --clr-text-primary:#e0e0e0; --clr-text-secondary:#b0b0b0;
     --clr-border:#404040; --clr-shadow:rgba(0,0,0,0.3); --border-line: linear-gradient(to right, transparent,rgba(255,255,255,.8) 30%, rgba(255,255,255,.8) 70%, transparent)100; 
@@ -399,6 +399,9 @@ img {
 }
 .contact .container3 .contact-grid .send-message form {
     display:flex; flex-direction:column; gap:1.7rem;
+}
+.contact .container3 .contact-grid .send-message form .hidden {
+    display: none;
 }
 .contact .container3 .contact-grid .send-message form label input, .contact .container3 .contact-grid .send-message form label textarea {
     display:block; padding:12px 10px; height:auto; width:100%; border:1px solid var(--clr-border); border-radius:4px; font-family:inherit; font-size:1rem;
