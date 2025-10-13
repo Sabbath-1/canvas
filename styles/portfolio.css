@@ -128,7 +128,7 @@ img {
     display:flex; justify-content:center; align-items:start; gap:1.5rem; flex-direction:column;
     height:100vh; color:var(--clr-accent); padding-top:4rem;
     background:linear-gradient(-45deg,#59c1bd, #005e72, #00738c, #151f6d); 
-    background-size:300% 300%; box-shadow:0 4px 8px rgba(0,0,0,.1);
+    background-size:400% 400%; box-shadow:0 4px 8px rgba(0,0,0,.1);
     animation:headerBackground 15s ease infinite; padding-inline:3rem;
 
     @media (width < 500px) {
