@@ -48,12 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
 
-    let autopaly = setInterval(nextSlide, 5000);
+    let autopaly = setInterval(nextSlide, 3000);
     containerCaro.parentElement.addEventListener('mouseenter', () => {
         clearInterval(autopaly);
     })
     containerCaro.parentElement.addEventListener('mouseleave', () => {
-       autopaly = setInterval(nextSlide, 5000);
+       autopaly = setInterval(nextSlide, 3000);
     });
     //for the swipe mobile
     let startX = 0;

@@ -14,7 +14,11 @@
     box-sizing:border-box; padding:0; margin:0;
 }
 html {
-    font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif; font-size:16px; background-color:var(--clr-bg-primary); scroll-behavior:smooth; scroll-padding-top:60px;
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif; font-size: 16px; background-color: var(--clr-bg-primary); scroll-behavior: smooth; scroll-padding-top: 60px; scroll-snap-type: y mandatory;
+
+    @media (width < 500px) {
+        scroll-padding-top: 55px;
+    }
 }
 img {
     max-width:100%; height:auto; display:block;
@@ -128,11 +132,11 @@ img {
     display:flex; justify-content:center; align-items:start; gap:1.5rem; flex-direction:column;
     height:100vh; color:var(--clr-accent); padding-top:4rem;
     background:linear-gradient(-45deg,#59c1bd, #005e72, #00738c, #151f6d); 
-    background-size:400% 400%; box-shadow:0 4px 8px rgba(0,0,0,.1);
+    background-size:400% 400%; box-shadow:0 4px 8px rgba(0,0,0,.1); scroll-snap-align: start;
     animation:headerBackground 15s ease infinite; padding-inline:3rem;
 
     @media (width < 500px) {
-        padding-inline:2rem; gap:1rem; padding-top:2rem;
+        padding-inline: 2rem; gap: 1rem; padding-top: 2rem;
     }
 }
 @keyframes headerBackground {
@@ -174,7 +178,7 @@ img {
     transform:translateY(-8px); background-color:var(--clr-accent);
 }
 .about {
-   display:flex; justify-content:center; align-items:center; 
+   display:flex; justify-content:center; align-items:center; scroll-snap-align: start; background-color:var(--clr-bg-primary); padding-block:4rem;
 
    @media (width > 1200px) {
     min-height: calc(100vh - 60px); max-height: calc(100vh - 60px);  border-bottom: 1px solid; border-image: var(--border-line);
@@ -247,7 +251,7 @@ img {
     background-color:#222; color:var(--clr-accent); border-color:#222;
 } 
 .work {
-    background-color:var(--clr-bg-primary); display:flex; align-items:center; 
+    background-color:var(--clr-bg-primary); display:flex; align-items:center; scroll-snap-align: start; padding-block:4rem;
 
     @media (width > 1200px) {
         min-height:100vh;
@@ -317,9 +321,7 @@ img {
     color:var(--clr-txt-secondary);
 }
 .contact {
-    @media (width > 1200px) {
-        min-height:100vh;
-    }
+  scroll-snap-align: start;
 }
 .contact .container3 {
     display:flex; flex-direction:column; justify-content:center; align-items:center; max-width:1200px; margin:0 auto; padding:2rem;
@@ -422,6 +424,9 @@ img {
 }
 .contact .container3 .contact-grid .send-message form button:focus {
     background:var(--clr-txt-main);
+}
+.footer {
+    scroll-snap-align: end; background-color:var(--clr-bg-secondary); margin-top:2rem;
 }
 .footer p {
     text-align:center; padding:2rem; color:var(--clr-text-secondary); border-top:1px solid; border-image:var(--border-line); margin-top:2rem; font-size:.9rem;
