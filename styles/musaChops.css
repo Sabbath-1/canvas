@@ -12,10 +12,10 @@
     --transition: all .3s ease;
 }
 html {
-    scroll-behavior: smooth; scroll-padding-top: 63px;
+    scroll-behavior: smooth; scroll-padding-top: 59px;
 
     @media (width < 455px) {
-        scroll-padding-top: 55px;
+        scroll-padding-top: 47px;
     }
 }
 *, *::before, *::after {
@@ -62,6 +62,7 @@ img {
     background-color: var(--color-bg-light);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
     padding: 0.5rem 3rem;
+    transition: var(--transition);
 }
 .logo {
     display: inline-block;
@@ -73,11 +74,11 @@ img {
 }
 .logo img {
     height: auto;
-    width: 150px;
+    width: 135px;
 }
 .header-container.scrolled .logo img {
     height: auto;
-    width: 120px;
+    width: 110px;
 }
 .hamburger {
     display: none;
@@ -91,7 +92,7 @@ img {
     justify-content: space-between;
     position: fixed;
     top: 30px;
-    right: 40px;
+    right: 64px;
 
     @media (width < 750px) {
         display: flex;
@@ -99,7 +100,7 @@ img {
 
     @media (width < 500px) {
         width: 28px;
-        height: 22.5px;
+        height: 21px;
     }
 
     @media (width < 400px) {
@@ -119,6 +120,13 @@ img {
     transition: var(--transition);
     border-radius: 3px;
     transform-origin: center;
+
+    @media (width < 500px) {
+        height: 2.1px;
+    }
+}
+.header-container.scrolled .hamburger span {
+    height: 2px;
 }
 .hamburger.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
@@ -220,16 +228,24 @@ nav ul li a:hover {
     gap: 1rem; 
 }
 .hero-text {
-    position: absolute;
-    top: 50%;
+    position: absolute; width: 100%;
+    top: 50%; padding-inline: 2.5rem;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    margin-top: 2rem; 
 }
 .hero-text h1 {
     font-family: var(--font-heading);
     font-size: 3rem;
     margin-bottom: 2rem;
+
+    @media (width > 1200px) {
+        font-size: 3.5rem;
+    }
+    @media (width < 500px) {
+        font-size: 2.5rem;
+    }
 }
 .hero-text p {
     font-size: 1.2rem;
@@ -414,7 +430,7 @@ nav ul li a:hover {
     aspect-ratio: 4/3;
 }
 .services {
-    padding: 2rem 0;
+    padding: 2rem 1rem;
     background-color: #ffffffcc;
 }
 .services .services-head {
@@ -458,6 +474,13 @@ nav ul li a:hover {
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: center;
+
+    @media (width < 665px) {
+        padding-inline: 2rem;
+    }
+    @media (width < 500px) {
+        gap: 1rem; padding-inline: .5rem;
+    }
 }
 .services .service-card {
     background-color: #fff;
@@ -469,6 +492,12 @@ nav ul li a:hover {
     flex: 1 1 300px;
     max-width: 300px;
     transition: var(--transition);
+
+    @media (width < 665px) {
+        max-width: 100%;
+        margin-bottom: 1rem;
+        
+    }
 }
 .services .service-card:hover {
     transform: translateY(-10px);

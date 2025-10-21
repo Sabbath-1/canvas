@@ -251,10 +251,13 @@ img {
     background-color:#222; color:var(--clr-accent); border-color:#222;
 } 
 .work {
-    background-color:var(--clr-bg-primary); display:flex; align-items:center; scroll-snap-align: start; padding-block:4rem;
-
-    @media (width > 1200px) {
-        min-height:100vh;
+    background-color:var(--clr-bg-primary); display:flex; align-items:center; scroll-snap-align: start; padding-block: 4rem 2rem; 
+    
+    @media (width < 1050px) {
+        padding-block:2.5rem;
+    }
+    @media (width < 500px) {
+        padding-block: 1.5rem;
     }
 }
 .work .container2 {
