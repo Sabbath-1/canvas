@@ -1,5 +1,5 @@
 :root {
-    --color-primary: #c44d34;
+    --color-primary: #c44d34; --color-primary-hover: #ed4d24;
     --color-secondary: #6a994e;
     --color-accent: #f9a826;
     --color-bg-light: #f9f5eb;
@@ -347,13 +347,16 @@ nav ul li a:hover {
 .food-menu .dish-info h3 {
     font-family: var(--font-heading);
     color: var(--color-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem; cursor: pointer;
+}
+.food-menu .dish-info h3:hover {
+    color: var(--color-primary-hover);
 }
 .food-menu .dish-info p {
     margin-bottom: 0.5rem;
 }
 .food-menu .dish-info .price {
-    font-weight: bold;
+    font-weight: bold; cursor: pointer;
     color: var(--color-accent);
 }
 .about-sec {
