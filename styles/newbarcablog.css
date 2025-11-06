@@ -489,7 +489,7 @@ img {
         margin-bottom: .75rem;
     }
 }
-.blogPost .date {
+.blogPost .date, .date {
     font-size: 0.875rem;
     color: #ccc;
     margin-bottom: 0.5rem;
@@ -648,3 +648,143 @@ img {
     border-top:1px solid;
     border-image: linear-gradient(to right, transparent, #dcdcdc90 30%, #dcdcdc90 70%, transparent)100;
 }
+
+
+.blog-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #10103040;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 30px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-details h4 {
+            margin-bottom: 5px;
+        }
+
+        .read-time {
+            background: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+
+        .blog-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .blog-body {
+            font-size: 1.1em;
+        }
+
+        .blog-body p {
+            margin-bottom: 15px;
+        }
+
+        .blog-body h2 {
+            margin: 25px 0 15px 0;
+            color: #2c3e50;
+        }
+
+        .blog-body h3 {
+            margin: 20px 0 10px 0;
+            color: #e74c3c;
+        }
+
+        .ingredients-list, .instructions-list {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .ingredients-list li, .instructions-list li {
+            margin-bottom: 8px;
+        }
+
+        .tip-box {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #e9ecef;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #495057;
+            text-decoration: none;
+        }
+
+        .tag:hover {
+            background: #dee2e6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            
+            .blog-content {
+                padding: 20px;
+            }
+            
+            .blog-title {
+                font-size: 1.6em;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .blog-footer {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .featured-image {
+                height: 200px;
+            }
+        }
