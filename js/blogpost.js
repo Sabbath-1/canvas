@@ -1,6 +1,4 @@
 // blogpost.js
-// Article-page specific logic (populate from URL params, read time, share buttons)
-
 (function () {
   function q(name) {
     const p = new URLSearchParams(window.location.search);
@@ -16,29 +14,28 @@
   function populateArticleFromParams() {
     const title = q('title');
     const img = q('img');
-    const author = q('author') || '@Barca4L';
+    let author = q('author');
     const date = q('date') || '';
     const desc = q('desc');
 
     if (title) document.getElementById('article-title').textContent = title;
-    if (author) document.getElementById('article-author').textContent = author;
+
+    // Style @Barca4L if used
+    if (!author) {
+      author = '<span class="barca-author">@Barca4L</span>';
+    }
+    const authorEl = document.getElementById('article-author');
+    if (authorEl) authorEl.innerHTML = author;
+
     if (date) document.getElementById('article-date').textContent = date;
     if (img) {
       const el = document.getElementById('article-image');
-      // If img value is relative (starts with /), use as-is; otherwise allow full URL
       el.src = img;
       el.alt = title || 'Article image';
     }
     if (desc) {
-      // desc can be HTML-encoded; allow basic HTML
       document.getElementById('article-content').innerHTML = desc;
-    } else {
-      // If no desc passed, show a short placeholder lead if available
-      if (!desc && title) {
-        const lead = '<p class="article-lead">Read more about ' + (title || 'this article') + ' on Barca 4L.</p>';
-        document.getElementById('article-content').innerHTML = lead;
-      }
-    }
+    } // else: do not overwrite manual content
 
     // update read time
     const readEl = document.getElementById('read-time');

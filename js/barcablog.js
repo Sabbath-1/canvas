@@ -1,6 +1,4 @@
-// ===== CORE LAYOUT FUNCTIONS =====
-
-// Adding padding ie the scroll-padding-top
+// Adding padding to fix the header 
 function headerHeightFix() {
     const header = document.querySelector('.header-container');
     if (header) {
@@ -24,8 +22,7 @@ function hideMainWrapper() {
     }
 }
 
-// ===== NAVIGATION & PAGE MANAGEMENT =====
-
+// nav and page management
 function setupNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
@@ -41,7 +38,6 @@ function setupNavigation() {
             const targetPage = document.getElementById(navId);
             if (targetPage) {
                 targetPage.classList.add('active');
-                // Activate all nav-link elements that correspond to this navId (header + hero buttons)
                 document.querySelectorAll('.nav-link[data-nav="' + navId + '"]').forEach(n => n.classList.add('active'));
             } else {
                 // We're likely on a different page (e.g. blogPost.html) — navigate back to the main page
@@ -71,16 +67,14 @@ function setupNavigation() {
     });
 }
 
-// ===== STATE MANAGEMENT (MOVED FROM HTML) =====
-
+// state management
 function setupStateManagement() {
-    // State management has been moved to site-state.js
-    // This function is kept as a placeholder in case we need to add
+    // State management don been moved to siteState js
+    // This  is kept as a placeholder in case I for add
     // page-specific state handling in the future
 }
 
-// ===== MEDIA QUERY FUNCTIONALITY =====
-
+// media query func
 function setupMediaQueryHighlighter() {
     const element = document.querySelector('#highlighter');
     if (element) {
@@ -98,8 +92,7 @@ function setupMediaQueryHighlighter() {
     }
 }
 
-// ===== SEARCH FUNCTIONALITY =====
-
+// search func
 function setupSearch() {
     const menuSearchBtn = document.getElementById('menu-search');
     const searchOverlay = document.querySelector('.search-overlay');
@@ -138,7 +131,7 @@ function setupSearch() {
             if (searchOverlay.classList.contains('active')) closeOverlay(); else openOverlay();
         });
 
-        // keyboard activation (Enter / Space)
+        // keyboard activation
         menuSearchBtn.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -255,9 +248,7 @@ function setupSearch() {
     }
 }
 
-// ===== BLOG POST FUNCTIONALITY =====
-
-// Get query parameter value (renamed from q to avoid conflicts)
+// blog post func
 function getQueryParam(name) {
     const p = new URLSearchParams(window.location.search);
     const v = p.get(name);
@@ -279,7 +270,7 @@ function calculateReadTimeForElement(selector) {
 function populateArticleFromParams() {
     const title = getQueryParam('title');
     const img = getQueryParam('img');
-    const author = getQueryParam('author') || '@Barca4L';
+    let author = getQueryParam('author');
     const date = getQueryParam('date') || '';
     const desc = getQueryParam('desc');
 
@@ -287,17 +278,23 @@ function populateArticleFromParams() {
         const titleEl = document.getElementById('article-title');
         if (titleEl) titleEl.textContent = title;
     }
-    
-    if (author) {
-        const authorEl = document.getElementById('article-author');
-        if (authorEl) authorEl.textContent = author;
+
+    // If no author provided, keep the default styled author span (do not overwrite if manual content exists)
+    const authorEl = document.getElementById('article-author');
+    if (authorEl) {
+        if (author) {
+            authorEl.textContent = author;
+        } else if (!authorEl.innerHTML.trim()) {
+            // only insert default when there's no manual/previous content
+            authorEl.innerHTML = '<span class="barca-author">@Barca4L</span>';
+        }
     }
-    
+
     if (date) {
         const dateEl = document.getElementById('article-date');
         if (dateEl) dateEl.textContent = date;
     }
-    
+
     if (img) {
         const imageEl = document.getElementById('article-image');
         if (imageEl) {
@@ -305,19 +302,12 @@ function populateArticleFromParams() {
             imageEl.alt = title || 'Article image';
         }
     }
-    
+
     if (desc) {
         const contentEl = document.getElementById('article-content');
         if (contentEl) contentEl.innerHTML = desc;
-    } else {
-        const contentEl = document.getElementById('article-content');
-        if (!desc && title && contentEl) {
-            const lead = '<p class="article-lead">Read more about ' + (title || 'this article') + ' on Barca 4L.</p>';
-            contentEl.innerHTML = lead;
-        }
     }
 
-    // update read time
     const readEl = document.getElementById('read-time');
     const content = document.getElementById('article-content');
     const minutes = content ? calculateReadTime(content.textContent || '') : 0;
@@ -344,21 +334,17 @@ function setupBlogPostPage() {
     populateArticleFromParams();
     initShareButtons();
 
-    // If the main page stored which nav should be active, apply it to header/nav elements here
+    // for keeping the active state on the nav links across the pages
     try {
         const pending = sessionStorage.getItem('barca_active_nav');
         if (pending) {
-            // remove any existing active classes
             document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-            // add active to all nav-link elements that match
             document.querySelectorAll('.nav-link[data-nav="' + pending + '"]').forEach(n => n.classList.add('active'));
-            // DO NOT remove the stored barca_active_nav here — keep it so the main page
-            // can still read and restore the user's previous position when they hit Back.
         }
     } catch (e) { /* ignore */ }
 }
 
-// ===== MAIN INITIALIZATION =====
+// calling the functions
 
 document.addEventListener('DOMContentLoaded', function() {
     // Core layout
@@ -370,10 +356,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setupStateManagement();
     setupMediaQueryHighlighter();
     
-    // Search functionality
+    // Search func
     setupSearch();
     
-    // Blog post functionality (only runs on blog post pages)
+    // Blog post func
     if (window.location.pathname.includes('blogPost.html')) {
         setupBlogPostPage();
     }
