@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4L Blog Post</title>
+    <title>Barca 4L - Article</title>
     <link rel="stylesheet" href="./styles/newbarcablog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="./js/barcablog.js" defer></script>
+    <script src="./js/site-state.js" defer></script>
+    <script src="./js/blogpost.js" defer></script>
 </head>
 <body>
    <header data-header class="header-container">
@@ -35,71 +39,49 @@
   </header>
 
     <div class="blog-container">
-        <!-- Featured Image -->
-        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-             alt="Delicious Chocolate Cake" class="featured-image">
+        <img src="" alt="" class="featured-image" id="article-image">
 
         <div class="blog-content">
-            <!-- Blog Meta -->
             <div class="blog-meta">
                 <div class="author-info">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                         alt="Author" class="author-avatar">
                     <div class="author-details">
-                        <h4>Chef John Doe</h4>
-                        <span class="date">Published on December 15, 2023</span>
+                        <h4 id="article-author"></h4>
+                        <span class="date" id="article-date"></span>
                     </div>
                 </div>
-                <div class="read-time">8 min read</div>
+                <div class="read-time" id="read-time"></div>
             </div>
 
             <!-- Blog Title -->
-            <h1 class="blog-title">The Ultimate Chocolate Cake Recipe</h1>
+            <h1 class="blog-title" id="article-title"></h1>
 
             <!-- Blog Body -->
-            <div class="blog-body">
-                <p>There's nothing quite like the smell of a freshly baked chocolate cake wafting through your kitchen. This recipe has been perfected over years of testing and is guaranteed to deliver a moist, rich, and incredibly delicious chocolate cake.</p>
+            <div class="blog-body" id="article-content">
+                Okay so I will be updating this very soon so please relax
+                <!-- Content will be loaded dynamically -->
+            </div>
 
-                <h2>Why This Recipe Works</h2>
-                <p>What sets this chocolate cake apart is the combination of high-quality cocoa powder, the perfect balance of wet and dry ingredients, and a secret ingredient that keeps it incredibly moist for days.</p>
-
-                <h2>Ingredients</h2>
-                <ul class="ingredients-list">
-                    <li>2 cups all-purpose flour</li>
-                    <li>2 cups granulated sugar</li>
-                    <li>¾ cup unsweetened cocoa powder</li>
-                    <li>2 teaspoons baking powder</li>
-                    <li>1½ teaspoons baking soda</li>
-                    <li>1 teaspoon salt</li>
-                    <li>1 cup buttermilk</li>
-                    <li>½ cup vegetable oil</li>
-                    <li>2 large eggs</li>
-                    <li>2 teaspoons vanilla extract</li>
-                    <li>1 cup boiling water</li>
-                </ul>
-
-                <h2>Instructions</h2>
-                <ol class="instructions-list">
-                    <li>Preheat your oven to 350°F (175°C). Grease and flour two 9-inch round baking pans.</li>
-                    <li>In a large bowl, whisk together flour, sugar, cocoa, baking powder, baking soda, and salt.</li>
-                    <li>Add buttermilk, vegetable oil, eggs, and vanilla to the flour mixture and mix until well combined.</li>
-                    <li>Carefully stir in boiling water until the batter is smooth.</li>
-                    <li>Pour batter evenly into prepared pans and bake for 30-35 minutes.</li>
-                    <li>Let cool in pans for 10 minutes before removing to wire racks to cool completely.</li>
-                </ol>
-
-                <div class="tip-box">
-                    <strong>Pro Tip:</strong> For an extra moist cake, brush the cooled layers with simple syrup before frosting.
+            <div class="article-social">
+                <h3>Share this article</h3>
+                <div class="share-buttons">
+                    <button class="share-btn twitter">
+                        <i class="fa-brands fa-x-twitter"></i> Share on X
+                    </button>
+                    <button class="share-btn facebook">
+                        <i class="fa-brands fa-facebook"></i> Share on Facebook
+                    </button>
+                    <button class="share-btn whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i> Share on WhatsApp
+                    </button>
                 </div>
+            </div>
 
-                <h2>Frosting Options</h2>
-                <p>While this cake is delicious on its own, pairing it with the right frosting takes it to the next level.</p>
-                
-                <h3>Chocolate Buttercream</h3>
-                <p>A classic choice that never disappoints. Creamy, rich, and perfectly chocolatey.</p>
-                
-                <h3>Cream Cheese Frosting</h3>
-                <p>The tanginess of cream cheese balances the sweetness of the cake beautifully.</p>
+            <!-- Related Articles -->
+            <div class="related-articles">
+                <h3>More Barcelona News</h3>
+                <div class="related-grid" id="related-articles">
+                    <!-- Related articles will be loaded dynamically -->
+                </div>
             </div>
         </div>
     </div>
@@ -130,18 +112,6 @@
     </div>
     <p class="footer-copy">allBarcaNews © 2024. All rights reserved.</p>
   </footer>
-
-    <script>
-        // Simple reading time calculator
-        function calculateReadTime() {
-            const text = document.querySelector('.blog-body').textContent;
-            const words = text.split(/\s+/).length;
-            const readTime = Math.ceil(words / 200);
-            document.querySelector('.read-time').textContent = readTime + ' min read';
-        }
-
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', calculateReadTime);
-    </script>
+  
 </body>
 </html>

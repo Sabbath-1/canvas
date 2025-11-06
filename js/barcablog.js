@@ -1,3 +1,5 @@
+// ===== CORE LAYOUT FUNCTIONS =====
+
 // Adding padding ie the scroll-padding-top
 function headerHeightFix() {
     const header = document.querySelector('.header-container');
@@ -8,9 +10,6 @@ function headerHeightFix() {
         document.documentElement.style.scrollPaddingTop = totalHeight + 'px';
     }
 }
-
-window.addEventListener('load', headerHeightFix);
-window.addEventListener('resize', headerHeightFix);
 
 // Hide all pages, show only the active one
 function hideMainWrapper() {
@@ -25,8 +24,9 @@ function hideMainWrapper() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Navigation functionality
+// ===== NAVIGATION & PAGE MANAGEMENT =====
+
+function setupNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -39,9 +39,26 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.forEach(l => l.classList.remove('active'));
 
             const targetPage = document.getElementById(navId);
-            if (targetPage) targetPage.classList.add('active');
-            this.classList.add('active');
-            this.focus();
+            if (targetPage) {
+                targetPage.classList.add('active');
+                // Activate all nav-link elements that correspond to this navId (header + hero buttons)
+                document.querySelectorAll('.nav-link[data-nav="' + navId + '"]').forEach(n => n.classList.add('active'));
+            } else {
+                // We're likely on a different page (e.g. blogPost.html) — navigate back to the main page
+                // Save which nav should be active so the main page can restore it after navigation
+                try {
+                    const activeNav = navId;
+                    sessionStorage.setItem('barca_active_nav', activeNav);
+                } catch (err) {}
+                // Redirect to the main site page (allInOneBarca.html) with the hash so main JS can pick it up
+                window.location.href = 'allInOneBarca.html#' + navId;
+                return;
+            }
+            // If the clicked element isn't the header link, try to focus the header nav link for keyboard users
+            try {
+                const headerNav = document.querySelector('.nav-link[data-nav="' + navId + '"]');
+                if (headerNav) headerNav.focus(); else this.focus();
+            } catch (e) { this.focus(); }
 
             hideMainWrapper();
             
@@ -52,8 +69,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+}
 
-    // Media query functionality for highlighter
+// ===== STATE MANAGEMENT (MOVED FROM HTML) =====
+
+function setupStateManagement() {
+    // State management has been moved to site-state.js
+    // This function is kept as a placeholder in case we need to add
+    // page-specific state handling in the future
+}
+
+// ===== MEDIA QUERY FUNCTIONALITY =====
+
+function setupMediaQueryHighlighter() {
     const element = document.querySelector('#highlighter');
     if (element) {
         const highlight = 'highlight';
@@ -68,16 +96,17 @@ document.addEventListener('DOMContentLoaded', function() {
         queryHandler(mediaQuery);
         mediaQuery.addEventListener('change', queryHandler);
     }
+}
 
-    hideMainWrapper();
+// ===== SEARCH FUNCTIONALITY =====
 
-    // for the search func
+function setupSearch() {
     const menuSearchBtn = document.getElementById('menu-search');
     const searchOverlay = document.querySelector('.search-overlay');
     const closeSearchBtn = document.querySelector('.close-search');
     const searchInput = searchOverlay ? searchOverlay.querySelector('.search-input') : null;
 
-    // containerfor the search results
+    // container for the search results
     let resultsContainer = null;
     if (searchOverlay) {
         const searchContainer = searchOverlay.querySelector('.search-container') || searchOverlay;
@@ -224,9 +253,137 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+}
 
+// ===== BLOG POST FUNCTIONALITY =====
+
+// Get query parameter value (renamed from q to avoid conflicts)
+function getQueryParam(name) {
+    const p = new URLSearchParams(window.location.search);
+    const v = p.get(name);
+    return v ? decodeURIComponent(v) : null;
+}
+
+function calculateReadTime(text) {
+    const words = (text || '').trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.ceil(words / 200));
+}
+
+function calculateReadTimeForElement(selector) {
+    const el = document.querySelector(selector);
+    if (!el) return 0;
+    const text = el.textContent || '';
+    return calculateReadTime(text);
+}
+
+function populateArticleFromParams() {
+    const title = getQueryParam('title');
+    const img = getQueryParam('img');
+    const author = getQueryParam('author') || '@Barca4L';
+    const date = getQueryParam('date') || '';
+    const desc = getQueryParam('desc');
+
+    if (title) {
+        const titleEl = document.getElementById('article-title');
+        if (titleEl) titleEl.textContent = title;
+    }
+    
+    if (author) {
+        const authorEl = document.getElementById('article-author');
+        if (authorEl) authorEl.textContent = author;
+    }
+    
+    if (date) {
+        const dateEl = document.getElementById('article-date');
+        if (dateEl) dateEl.textContent = date;
+    }
+    
+    if (img) {
+        const imageEl = document.getElementById('article-image');
+        if (imageEl) {
+            imageEl.src = img;
+            imageEl.alt = title || 'Article image';
+        }
+    }
+    
+    if (desc) {
+        const contentEl = document.getElementById('article-content');
+        if (contentEl) contentEl.innerHTML = desc;
+    } else {
+        const contentEl = document.getElementById('article-content');
+        if (!desc && title && contentEl) {
+            const lead = '<p class="article-lead">Read more about ' + (title || 'this article') + ' on Barca 4L.</p>';
+            contentEl.innerHTML = lead;
+        }
+    }
+
+    // update read time
+    const readEl = document.getElementById('read-time');
+    const content = document.getElementById('article-content');
+    const minutes = content ? calculateReadTime(content.textContent || '') : 0;
+    if (readEl) readEl.textContent = minutes + ' min read';
+}
+
+function initShareButtons() {
+    document.querySelectorAll('.share-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const url = window.location.href;
+            const title = document.getElementById('article-title')?.textContent || document.title;
+            if (this.classList.contains('twitter')) {
+                window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`);
+            } else if (this.classList.contains('facebook')) {
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
+            } else if (this.classList.contains('whatsapp')) {
+                window.open(`https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`);
+            }
+        });
+    });
+}
+
+function setupBlogPostPage() {
+    populateArticleFromParams();
+    initShareButtons();
+
+    // If the main page stored which nav should be active, apply it to header/nav elements here
+    try {
+        const pending = sessionStorage.getItem('barca_active_nav');
+        if (pending) {
+            // remove any existing active classes
+            document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+            // add active to all nav-link elements that match
+            document.querySelectorAll('.nav-link[data-nav="' + pending + '"]').forEach(n => n.classList.add('active'));
+            // DO NOT remove the stored barca_active_nav here — keep it so the main page
+            // can still read and restore the user's previous position when they hit Back.
+        }
+    } catch (e) { /* ignore */ }
+}
+
+// ===== MAIN INITIALIZATION =====
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Core layout
+    headerHeightFix();
+    hideMainWrapper();
+    
+    // Navigation
+    setupNavigation();
+    setupStateManagement();
+    setupMediaQueryHighlighter();
+    
+    // Search functionality
+    setupSearch();
+    
+    // Blog post functionality (only runs on blog post pages)
+    if (window.location.pathname.includes('blogPost.html')) {
+        setupBlogPostPage();
+    }
 });
 
 // Additional event listeners
-window.addEventListener('load', hideMainWrapper);
+window.addEventListener('load', function() {
+    headerHeightFix();
+    hideMainWrapper();
+});
+
+window.addEventListener('resize', headerHeightFix);
 window.addEventListener('hashchange', hideMainWrapper);
