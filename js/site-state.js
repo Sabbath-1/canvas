@@ -1,17 +1,10 @@
-// site-state.js
-// Shared client state handling between the main page and article pages.
-// - Saves scroll/hash/active nav when opening an article
-// - Restores active nav/hash/scroll on the main page (including pageshow/back)
-// - Mirrors active nav on article pages without clearing the stored key
 
 (function () {
-  // Enable debug logging for troubleshooting
   const DEBUG = true;
   function log(...args) {
     if (DEBUG) console.log('[Site]', ...args);
   }
 
-  // Storage keys (consistent naming is important)
   const keys = {
     scroll: 'barca_scroll',
     hash: 'barca_hash',
@@ -45,10 +38,8 @@
     }
   }
 
-  // Apply pending nav on article pages (mirror header active state)
   function applyPendingNavOnArticle() {
     try {
-      // Only run on blog post pages
       if (!document.querySelector('.blog-container')) {
         log('Not an article page, skipping nav sync');
         return;
@@ -64,8 +55,6 @@
       document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
       document.querySelectorAll('.nav-link[data-nav="' + pending + '"]').forEach(n => n.classList.add('active'));
 
-      // Important: DO NOT remove the active nav here
-      // The main page needs it when user hits Back
       log('Nav applied (keeping for back navigation)');
     } catch (e) {
       console.warn('[Site] Error applying article nav:', e);
@@ -75,7 +64,7 @@
   // Restore stored scroll/hash/nav on the main page
   function restoreMainPageState() {
     try {
-      // Check if we're on the main page
+      // C if we're on the main page
       if (!document.querySelector('.main-container')) {
         log('Not on main page, skipping restore');
         return;
@@ -89,7 +78,7 @@
       const pendingNav = sessionStorage.getItem(keys.activeNav);
       log('Found stored values:', { savedHash, savedScroll, pendingNav });
 
-      // 1. First restore navigation state
+      // restore nav state
       if (pendingNav) {
         log('Restoring navigation to:', pendingNav);
         try {
@@ -114,7 +103,6 @@
             try { hideMainWrapper(); } catch (e) {}
           }
 
-          // Only clear active_nav AFTER successful application
           sessionStorage.removeItem(keys.activeNav);
           log('Cleared active nav after applying');
         } catch (e) {
@@ -122,7 +110,7 @@
         }
       }
 
-      // 2. Then restore the hash if needed
+      // restore the hash if needed
       if (savedHash) {
         log('Restoring hash:', savedHash);
         if (savedHash !== location.hash) {
@@ -131,10 +119,9 @@
         sessionStorage.removeItem(keys.hash);
       }
 
-      // 3. Finally restore scroll position after a brief delay
+      // 3 restore scroll position after a brief delay
       if (!Number.isNaN(savedScroll) && savedScroll > 0) {
         log('Will restore scroll to:', savedScroll);
-        // Delay scroll restoration slightly to let layout settle
         setTimeout(function () {
           try {
             log('Restoring scroll position...');
@@ -145,7 +132,7 @@
           }
           sessionStorage.removeItem(keys.scroll);
           log('Scroll restored and cleared');
-        }, 100); // Slightly longer delay for more reliable restore
+        }, 100); 
       }
     } catch (err) {
       console.warn('[Site] Error in restore:', err);
@@ -159,7 +146,7 @@
     try {
       const href = a.getAttribute('href') || '';
       if (href.indexOf('blogPost.html') === 0 || href.includes('blogPost.html?')) {
-        // Only save state for normal clicks (not middle click/ctrl+click)
+        // Only save state for normal clicks (not them middle click/ctrl+click)
         if (e.button === 0 && !e.ctrlKey && !e.metaKey) {
           saveMainPageState(href);
         }
@@ -167,9 +154,8 @@
     } catch (err) {
       console.warn('[Site] Error in click handler:', err);
     }
-  }, { capture: true }); // Capture phase to handle before navigation
+  }, { capture: true }); 
 
-  // Run restore handlers at appropriate times
   window.addEventListener('DOMContentLoaded', function() {
     log('DOMContentLoaded - syncing state...');
     applyPendingNavOnArticle();
@@ -177,7 +163,6 @@
   });
 
   window.addEventListener('pageshow', function (event) {
-    // pageshow fires on back/forward navigation including bfcache restore
     log('pageshow event - syncing state... (persisted:', event.persisted, ')');
     applyPendingNavOnArticle();
     restoreMainPageState();
