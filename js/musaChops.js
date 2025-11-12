@@ -198,7 +198,7 @@ function popUp() {
             
             const content = `
                 <p>This is the <strong>${title}</strong> and is bad delicious💯🎉.</p>
-                <p> Caution: May cause spontaneous happiness.</p>
+                <p> Caution: This is too good.</p>
                 <div style="margin-top: 1rem;">
                     <button class="popup-action-btn" style="padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
                         Chow Is Coming!
