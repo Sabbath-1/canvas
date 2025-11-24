@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const typingEl = document.getElementById('typing');
     const text = [
-        "Welcome To Quamina Studios",
+        "Welcome, Quamina Elvin Here",
         "I'm A Web Developer",
         "Design | Code | Innovate",
         "Let's Build Somethig Amazing",

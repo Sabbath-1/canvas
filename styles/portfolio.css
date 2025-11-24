@@ -43,7 +43,10 @@ img {
     @media (width < 500px) {
         font-size:1.3rem;
     }
-}   
+} 
+.nav .page-header span {
+    color:var(--clr-accent); padding-inline: 1rem; background-color: var(--clr-txt-main); border-radius: 4px; font-weight: 600; display: inline-block; transform: rotate(-5deg);
+}  
 .nav .hamburger {
     display:none; flex-direction:column; justify-content:center; align-items:center; width:28px; height:28px; position:fixed; 
     background:transparent; border:none; outline:1px solid transparent; border-radius:50%; gap:.4rem;  right:3rem; cursor:pointer;
