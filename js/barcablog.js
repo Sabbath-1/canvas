@@ -298,14 +298,7 @@ function populateArticleFromParams() {
     if (img) {
         const imageEl = document.getElementById('article-image');
         if (imageEl) {
-            // Normalize image path so "img%2F..." or "img/..." becomes "/img/..."
-            let normalized = img;
-            // decoded value should be returned by getQueryParam; ensure absolute /root for site-relative paths
-            if (!/^https?:\/\//i.test(normalized) && !/^data:/i.test(normalized)) {
-                if (normalized.startsWith('./')) normalized = normalized.replace(/^\.\//, '/');
-                if (!normalized.startsWith('/')) normalized = '/' + normalized;
-            }
-            imageEl.src = normalized;
+            imageEl.src = img;
             imageEl.alt = title || 'Article image';
         }
     }
