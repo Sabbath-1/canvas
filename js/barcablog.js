@@ -298,7 +298,16 @@ function populateArticleFromParams() {
     if (img) {
         const imageEl = document.getElementById('article-image');
         if (imageEl) {
-            imageEl.src = img;
+            // Normalize image path so the article always receives an absolute root path
+            // Acceptable forms: /img/foo.jpg, img/foo.jpg, ./img/foo.jpg, absolute URLs, data URIs
+            let normalized = String(img).trim();
+            // If it's not an absolute URL or data URI, make it root-relative
+            if (!/^https?:\/\//i.test(normalized) && !/^data:/i.test(normalized)) {
+                // strip leading './' then ensure leading '/'
+                if (normalized.startsWith('./')) normalized = normalized.replace(/^\.\//, '');
+                if (!normalized.startsWith('/')) normalized = '/' + normalized;
+            }
+            imageEl.src = normalized;
             imageEl.alt = title || 'Article image';
         }
     }
