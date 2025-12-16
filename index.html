@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quamina Studios</title>
+    <title>Quamina Elvin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/portfolio.css">
     <script src="js/portfollio.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 <body>
     <nav class="nav" id="nav">
@@ -164,13 +165,14 @@
                 </div>
                 <div class="send-message">
                     <h3>Send a Message</h3>
-                    <form name="message-form" method="post" netlify netlify-honeypot="bot-field" action="/thank-you">
+                    <form id="contactForm" name="message-form" method="post">
                         <p class="hidden"><label> Not to be filled <input type="text" name="bot-field"></label></p>
-                        <label>Full Name<input required name="name" type="text" placeholder="Your name"></label>
-                        <label>Email Address <input required name="email" type="email" placeholder="example@email.com"></label>
-                        <label>Subject <input required name="subject" type="text" placeholder="Project Inquiry"></label>
-                        <label>Message <textarea required name="message" rows="8" placeholder="Tell me about your project..."></textarea></label>
-                        <button type="submit">Send Message ⇛</span></button>
+                        <label>Full Name<input required name="name" id="name" type="text" placeholder="Your name"></label>
+                        <label>Email Address <input required name="email" id="email" type="email" placeholder="example@email.com"></label>
+                        <label>Subject <input required name="subject" id="subject" type="text" placeholder="Project Inquiry"></label>
+                        <label>Message <textarea required name="message" id="message" rows="8" placeholder="Tell me about your project..."></textarea></label>
+                        <button type="submit" id="submitBtn">Send Message ⇛</button>
+                        <p id="status" aria-live="polite"></p>
                     </form>
                 </div>
             </div>
