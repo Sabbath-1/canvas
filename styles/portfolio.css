@@ -215,10 +215,10 @@ img {
 }
 .about .container .about-info .cat {
     flex:1 1 70%; display:flex; flex-direction:column; gap:1.5rem; justify-content:center; align-items:flex-start;
-    background-color:var(--clr-surface); padding:1rem; border-radius:.5vw; box-shadow:0 4px 6px rgba(0,0,0,.1);
+    background-color:var(--clr-surface); padding:1.5rem; border-radius:.5vw; box-shadow:0 4px 6px rgba(0,0,0,.1);
 }
 .about .container .about-info p {
-    font-size:1.05rem; color:var(--clr-text-primary); line-height:1.5;
+    font-size:1.05rem; color:var(--clr-text-primary); line-height:1.6;
 }
 .about .container .about-info .cat a {
     text-decoration:none; color:var(--clr-accent); background:var(--clr-txt-main); padding:.7em 1.25em; border-radius:1vw; font-weight:600;
@@ -227,12 +227,22 @@ img {
 .about .container .about-info .cat a:hover {
     background-color:#00738c; transform:translateY(-4px);
 }
+.about .container .about-info .ring-animation {
+    padding: 6px; background: linear-gradient(90deg, #a8004d 0%, #5e2a84 25%, #2d5a8f 50%, #048060 75%, #a8004d 100%); background-size: 400% 100%; border-radius: 20px; animation: gradientMove 5s linear infinite, pulse 6s ease-in-out infinite; box-shadow:0 0 20px rgba(255, 0, 110, 0.3),0 0 40px rgba(131, 56, 236, 0.2); 
+    margin: 0 auto;
+}
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;} 100% {background-position: 400% 50%;}
+}
+@keyframes pulse {
+    0%, 100% {box-shadow:0 0 15px rgba(255, 0, 110, 0.3),0 0 25px rgba(131, 56, 236, 0.2);} 50% {box-shadow:0 0 25px rgba(255, 0, 110, 0.6),0 0 35px rgba(131, 56, 236, 0.4);}
+}
 .about .container .about-info .skills {
     flex:1 1 25%; display:flex; flex-direction:column; gap:2rem; justify-content:center; align-items:center; width:fit-content;
-    background-color:var(--clr-surface); padding:1rem; border-radius:1vw; box-shadow:0 4px 6px rgba(0,0,0,.1);
+    background-color:var(--clr-surface); padding:1rem 2rem; border-radius:1vw; box-shadow:0 4px 6px rgba(0,0,0,.1);
 }
 .about .container .about-info .skills .row, .about .container .about-info .skills .row2 {
-    display:flex !important; gap:1rem; align-items:center; justify-content:center; flex-direction:row !important;
+    display:flex !important; gap:1.5rem; align-items:center; justify-content:center; flex-direction:row !important;
 }
 .about .container .about-info .skills .box {
     width:70px; height:70px; border:solid transparent; display:flex; justify-content:center; align-items:center; transition:all 0.3s ease;
