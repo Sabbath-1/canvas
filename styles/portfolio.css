@@ -3,12 +3,14 @@
     --clr-txt-main:#005e72; --clr-txt-secondary: #151f6d;
     --clr-surface:var(--clr-bg-secondary); --clr-card-bg:#fDFDFD; --clr-text-primary:#222; --clr-text-secondary:#333;
     --clr-border:#ccc; --clr-shadow:rgba(0,0,0,0.1); --border-line: linear-gradient(to right, transparent,rgba(0,0,0,.8) 30%, rgba(0,0,0,.8) 70%, transparent)100; 
+    --clr-ani-red: #d96b8f; --clr-ani-purple: #8f79b7; --clr-ani-blue: #7b9fc7; --clr-ani-green: #5fae9c;
 }
 [data-theme="dark"] {
     --clr-bg-primary:#101010; --clr-bg-secondary:#1a1a1a; --clr-accent:#f9f9f9;
     --clr-txt-main:#4ecdc4; --clr-txt-secondary:#6c63ff;
     --clr-surface:#2d2d2d; --clr-card-bg:#212121; --clr-text-primary:#e0e0e0; --clr-text-secondary:#b0b0b0;
     --clr-border:#404040; --clr-shadow:rgba(0,0,0,0.3); --border-line: linear-gradient(to right, transparent,rgba(255,255,255,.8) 30%, rgba(255,255,255,.8) 70%, transparent)100; 
+    --clr-ani-red: #a8004d; --clr-ani-purple: #5e2a84; --clr-ani-blue: #2d5a8f; --clr-ani-green: #048060;
 }
 *, *::after, *::before {
     box-sizing:border-box; padding:0; margin:0;
@@ -153,8 +155,8 @@ img {
     }
 }
 .header .typeWritter {
-    display:flex; height:60px; justify-content:center; align-items:center;
-    font-family:'Courier Prime', monospace; font-size:1.5rem;
+    display: flex; height: 60px; justify-content: center; align-items: center;
+    font-family:'Courier Prime', monospace; font-size: 1.5rem;
 
     @media (width < 500px) {
         font-size:1.3rem;
@@ -228,7 +230,7 @@ img {
     background-color:#00738c; transform:translateY(-4px);
 }
 .about .container .about-info .ring-animation {
-    padding: 6px; background: linear-gradient(90deg, #a8004d 0%, #5e2a84 25%, #2d5a8f 50%, #048060 75%, #a8004d 100%); background-size: 400% 100%; border-radius: 20px; animation: gradientMove 5s linear infinite, pulse 6s ease-in-out infinite; box-shadow:0 0 20px rgba(255, 0, 110, 0.3),0 0 40px rgba(131, 56, 236, 0.2); 
+    padding: 6px; background: linear-gradient(90deg, var(--clr-ani-red) 0%, var(--clr-ani-purple) 25%, var(--clr-ani-blue) 50%, var(--clr-ani-green) 75%, var(--clr-ani-red) 100%); background-size: 400% 100%; border-radius: 20px; animation: gradientMove 5s linear infinite, pulse 6s ease-in-out infinite; box-shadow:0 0 20px rgba(255, 0, 110, 0.3),0 0 40px rgba(131, 56, 236, 0.2); 
     margin: 0 auto;
 }
 @keyframes gradientMove {
