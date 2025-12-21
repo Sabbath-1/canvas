@@ -148,7 +148,7 @@ img {
     0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;}
 }
 .header h1 {
-    font-size:3rem; margin-bottom:1rem; 
+    font-size: 3rem; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif;
 
     @media (width < 500px) {
         font-size:2.5rem;
