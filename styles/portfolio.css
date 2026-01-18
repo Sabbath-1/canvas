@@ -241,10 +241,7 @@ img {
 }
 .about .container .about-info .skills {
     flex:1 1 25%; display:flex; flex-direction: column; gap: 2rem; justify-content:center; align-items:center; width:fit-content;
-    background-color:var(--clr-surface); padding: 1rem 2rem; border-radius:1.5vw; animation: rotateIn ease; animation-timeline: view(); animation-range: entry 0% cover 50%;
-}
-@keyframes rotateIn {
-    from{opacity: 0; scale: .75; rotate: -180deg;} to{opacity: 1; scale: 1; rotate: 0deg;}
+    background-color:var(--clr-surface); padding: 1rem 2rem; border-radius:1.5vw; 
 }
 .about .container .about-info .skills .row, .about .container .about-info .skills .row2 {
     display:flex !important; gap:1.5rem; align-items:center; justify-content:center; flex-direction:row !important;
@@ -268,7 +265,7 @@ img {
 .about .container .about-info .skills .box.uiUx {
     background-color:#222; color:var(--clr-accent); border-color:#222; animation: spin linear; animation-timeline: view(); animation-range: entry 0% exit 100%;
 } 
-@keyframes pin {
+@keyframes spin {
     from{ rotate: 0deg;} to{ rotate: 1440deg;}
 }
 .work {
@@ -316,7 +313,7 @@ img {
     animation:appearUp linear; animation-timeline: view(); animation-range: entry 0% cover 40%;
 }
 @keyframes appearUp {
-    from{opacity: 0; transform:translateX(-100%);} to{opacity: 1; transform:translateX(0%);}
+    from{opacity: 0; transform:translateX(-100px);} to{opacity: 1; transform:translateX(0px);}
 }
 .work .container2 .projects-container .card .img-container {
     position:relative;
@@ -361,7 +358,7 @@ img {
     }
 }
 @keyframes appearFade {
-    from{opacity: 0; scale: .67;} to{opacity: 1; scale: 1;}
+    from{opacity: .3; scale: .67;} to{opacity: 1; scale: 1;}
 }
 .contact .container3 header {
     padding:3rem; text-align:center;
