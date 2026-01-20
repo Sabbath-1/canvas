@@ -93,8 +93,11 @@ img {
     display:flex; gap:2rem; align-items:center; z-index:999; 
 
     @media (width < 760px) {
-        flex-direction:column; margin-top:2rem; position:fixed; top:0; right:0; background-color:var(--clr-nav);  padding:4rem 3rem; 
+        flex-direction:column; margin-top:4rem; position:fixed; top:0; right:0; background-color:var(--clr-nav);  padding:4rem 3rem; 
         width: 60%; max-width: 300px; min-height: 100dvh; z-index: 999; display: none; 
+    }
+    @media (width < 500px) {
+        margin-top: 3.85rem;
     }
 }
 .nav .navList.active {
@@ -118,7 +121,7 @@ img {
 
 
     @media (width < 760px) {
-        margin-left: auto; margin-top: auto;
+        margin-left: auto; margin-top: auto; margin-bottom: 2rem;
     }
 }
 .nav .theme img {
