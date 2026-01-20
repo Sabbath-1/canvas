@@ -1,12 +1,12 @@
 :root{
-    --clr-bg-primary:#dedede; --clr-bg-secondary:#ededed; --clr-accent:#fff;
+    --clr-nav:rgba(222,222,222,0.65); --clr-bg-primary:#dedede; --clr-bg-secondary:#ededed; --clr-accent:#fff;
     --clr-txt-main:#005e72; --clr-txt-secondary: #151f6d;
     --clr-surface:var(--clr-bg-secondary); --clr-card-bg:#fDFDFD; --clr-text-primary:#222; --clr-text-secondary:#333;
     --clr-border:#ccc; --clr-shadow:rgba(0,0,0,0.1); --border-line: linear-gradient(to right, transparent,rgba(0,0,0,.8) 30%, rgba(0,0,0,.8) 70%, transparent)100; 
     --clr-ani-red: #d96b8f; --clr-ani-purple: #8f79b7; --clr-ani-blue: #7b9fc7; --clr-ani-green: #5fae9c;
 }
 [data-theme="dark"] {
-    --clr-bg-primary:#101010; --clr-bg-secondary:#1a1a1a; --clr-accent:#f9f9f9;
+    --clr-nav:transparent; --clr-bg-primary:#101010; --clr-bg-secondary:#1a1a1a; --clr-accent:#f9f9f9;
     --clr-txt-main:#4ecdc4; --clr-txt-secondary:#6c63ff;
     --clr-surface:#2d2d2d; --clr-card-bg:#212121; --clr-text-primary:#e0e0e0; --clr-text-secondary:#b0b0b0;
     --clr-border:#404040; --clr-shadow:rgba(0,0,0,0.3); --border-line: linear-gradient(to right, transparent,rgba(255,255,255,.8) 30%, rgba(255,255,255,.8) 70%, transparent)100; 
@@ -30,7 +30,7 @@ img {
 }
 .nav {
     display:flex; justify-content: space-between; align-items: center; position: fixed; top:0; left:0; right:0; z-index:1000;
-    background-color:var(--clr-bg-primary); padding:1rem 3rem; 
+    background-color:var(--clr-nav); padding:1rem 3rem; backdrop-filter: blur(200px); 
 
     @media (width < 500px) {
         padding:1rem 2rem;
@@ -93,7 +93,7 @@ img {
     display:flex; gap:2rem; align-items:center; z-index:999; 
 
     @media (width < 760px) {
-        flex-direction:column; margin-top:2rem; position:fixed; top:0; right:0; background-color:var(--clr-bg-primary);  padding:4rem 3rem; 
+        flex-direction:column; margin-top:2rem; position:fixed; top:0; right:0; background-color:var(--clr-nav);  padding:4rem 3rem; 
         width: 60%; max-width: 300px; min-height: 100dvh; z-index: 999; display: none; 
     }
 }
@@ -128,7 +128,7 @@ img {
     filter: brightness(0) invert(1);
 }
 .overlay {
-    position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,.2); opacity:0; visibility:hidden; z-index:900; transition:all .05s ease-in-out;
+    position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,.75); opacity:0; visibility:hidden; z-index:900; transition:all .05s ease-in-out;
 }
 .overlay.active {
     visibility: visible; opacity: 1;
