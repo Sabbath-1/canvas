@@ -100,3 +100,19 @@ themeToggle.addEventListener('click', () => {
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
 });
+
+const observer = new IntersectionObserver(
+  (entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        obs.unobserve(entry.target); // 🔥 KEY LINE
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+document.querySelectorAll('.card').forEach(el => {
+  observer.observe(el);
+});

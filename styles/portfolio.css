@@ -313,10 +313,13 @@ img {
 }
 .projects .container2 .projects-container .card {
     background-color:var(--clr-card-bg); border-radius:12px; overflow:hidden; transition:all .3s ease; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,.08);
-    animation:appearUp linear; animation-timeline: view(); animation-range: entry 0% cover 40%;
+    opacity: 0; transform: translateY(100px);
+}
+.projects .container2 .projects-container .card.animate {
+    animation:appearUp .6s ease-out forwards; will-change: transform, opacity;
 }
 @keyframes appearUp {
-    from{opacity: 0; transform:translateX(-100px);} to{opacity: 1; transform:translateX(0px);}
+    to{opacity: 1; transform:translateY(0px);}
 }
 .projects .container2 .projects-container .card .img-container {
     position:relative;
