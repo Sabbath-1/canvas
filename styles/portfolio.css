@@ -313,7 +313,7 @@ img {
 }
 .projects .container2 .projects-container .card {
     background-color:var(--clr-card-bg); border-radius:12px; overflow:hidden; transition:all .3s ease; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,.08);
-    opacity: 0; transform: translateY(100px);
+    opacity: 0; transform: translateY(50px);
 }
 .projects .container2 .projects-container .card.animate {
     animation:appearUp .6s ease-out forwards; will-change: transform, opacity;
