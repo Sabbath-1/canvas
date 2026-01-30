@@ -151,7 +151,7 @@ img {
     0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;}
 }
 .header .hero-inner {
-    display:flex; flex-direction:column; justify-content:start; align-items:start; text-align:start; gap:1.5rem; width: 90%; max-width:800px;
+    display:flex; flex-direction:column; justify-content:start; align-items:start; text-align:start; gap:1.5rem; width: 100%; max-width:800px;
 }
 .header h1 {
     font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.02em;
