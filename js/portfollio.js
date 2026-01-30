@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const typingEl = document.getElementById('typing');
     const text = [
-        "Simplicity that doesn’t break.",
-        "Interfaces built to hold up.",
+        "Simplicity that doesn’t break",
+        "Interfaces built to hold up",
         "Clarity backed by structure."
     ];
 
