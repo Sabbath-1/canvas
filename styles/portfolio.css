@@ -151,18 +151,13 @@ img {
     0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;}
 }
 .header .hero-inner {
-    display:flex; flex-direction:column; justify-content:start; align-items:start; text-align:start; gap:1.5rem;
+    display:flex; flex-direction:column; justify-content:start; align-items:start; text-align:start; gap:1.5rem; width: 90%; max-width:800px;
 }
 .header h1 {
-    font-size: clamp(2.8rem, 6vw, 4rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.02em;
 }
 .header .subtitle {
-    max-width: 600px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    opacity: 0.9;
+    max-width: 600px; font-size: 1.1rem; line-height: 1.6; opacity: 0.9;
 }
 .header .typeWritter {
     display: flex; height: 60px; justify-content: center; align-items: center;
@@ -426,7 +421,7 @@ img {
 .contact .container3 .contact-grid .contact-info .socials .socials-links a img {
     width:24px; height:24px; object-fit:contain;
 }
-[data-theme="dark"] .contact .container3 .contact-grid .contact-info .socials .socials-links a img,[data-theme="dark"] .contact .container3 .contact-grid .contact-info .contact-item img {
+[data-theme="dark"] .contact .container3 .contact-grid .contact-info .socials .socials-links a img,[data-theme="dark"] .contact .container3 .contact-grid .contact-info .contact-item img, [data-theme="dark"] .footer p img {
        filter:brightness(0) invert(100%);
 }
 .contact .container3 .contact-grid .contact-info .socials .socials-links a img:hover {
@@ -492,4 +487,7 @@ img {
 }
 .footer p {
     text-align:center; padding:2rem; color:var(--clr-text-secondary); border-top:1px solid; border-image:var(--border-line); margin-top:2rem; font-size:.9rem;
+}
+.footer p img {
+   display: inline-table; width:16px; height:16px; vertical-align:middle; margin-left:4px;
 }

@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const typingEl = document.getElementById('typing');
     const text = [
-        "I'm A Web Developer",
-        "Design | Code | Innovate",
-        "Let's Build Somethig Amazing",
-        "Let's Build Your Next Project."
-    ]
+        "Simplicity that doesn’t break.",
+        "Interfaces built to hold up.",
+        "Clarity backed by structure."
+    ];
+
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
